@@ -1,0 +1,59 @@
+config_file: ./configs/bg/bg_train.yaml
+continue_training: false
+data:
+  cityscapes_dir: data/cityscapes/
+  crop_size: 800
+  data_dir:
+  - data/bg/mid_term/point_cloud_static_nomoving_ind0_all/exported_predictions/
+  - data/bg/mid_term/point_cloud_static_nomoving_ind1_all/exported_predictions/
+  - data/bg/mid_term/point_cloud_static_nomoving_ind2_all/exported_predictions/
+  - data/bg/short_term/point_cloud_static_nomoving_ind0_all/exported_predictions/
+  - data/bg/short_term/point_cloud_static_nomoving_ind1_all/exported_predictions/
+  - data/bg/short_term/point_cloud_static_nomoving_ind2_all/exported_predictions/
+  data_inp_size: 3
+  data_splits:
+  - train
+  - val
+  depth_h5_path: data/bg/depths_decompressed_%s.h5
+  depth_norm_params_file: data/bg/depth_norm_params.pt
+  gap_len:
+  - 9
+  - 3
+  gt_dir: data/cityscapes/gtFine_nofg/
+  load_depths: true
+  max_depth: 200
+  min_depth: 0.1
+  only_background: true
+  scale_max: 2.0
+  scale_min: 0.5
+  use_depths: true
+dist_url: env://
+extra_args: null
+load_best_model: false
+load_model: null
+model:
+  convert2onehot: true
+  hardnet:
+    pretrain_path: pretrained_models/bg/hardnet70_cityscapes_model.pkl
+  model_type: bg
+  num_inputs: 3
+  seg_type: hardnet
+  use_depth_inps: true
+  use_dynamic_inputs: false
+no_gpu: false
+seed: 1
+task: bg
+training:
+  batch_size: 8
+  clip_grad_norm: 5.0
+  lr: 0.002
+  lr_decay_factor: 0.1
+  lr_decay_steps: 100
+  mom: 0.9
+  num_data_workers: 8
+  num_epochs: 180
+  num_val_data_workers: 8
+  steps_per_epoch: 500
+  val_batch_size: 4
+  wd: 0.0001
+working_dir: experiments/bg/

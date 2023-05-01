@@ -1,0 +1,18 @@
+fg
+USING CASCADE DEPTHS
+Traceback (most recent call last):
+  File "/home/ayy/Desktop/panoptic/panoptic-forecasting/panoptic_forecasting/experiments/train_model.py", line 22, in <module>
+    datasets = build_dataset(params)
+  File "/home/ayy/Desktop/panoptic/panoptic-forecasting/panoptic_forecasting/data/__init__.py", line 20, in build_dataset
+    return fg_instance_dataset.build_dataset(params, test=test)
+  File "/home/ayy/Desktop/panoptic/panoptic-forecasting/panoptic_forecasting/data/datasets/fg_instance_dataset.py", line 442, in build_dataset
+    datasets = {split:FGInstanceDataset(split, params, test=test) for split in splits}
+  File "/home/ayy/Desktop/panoptic/panoptic-forecasting/panoptic_forecasting/data/datasets/fg_instance_dataset.py", line 442, in <dictcomp>
+    datasets = {split:FGInstanceDataset(split, params, test=test) for split in splits}
+  File "/home/ayy/Desktop/panoptic/panoptic-forecasting/panoptic_forecasting/data/datasets/fg_instance_dataset.py", line 57, in __init__
+    self.data = pd.read_pickle(meta_path)
+  File "/home/ayy/.local/lib/python3.10/site-packages/pandas/io/pickle.py", line 187, in read_pickle
+    with get_handle(
+  File "/home/ayy/.local/lib/python3.10/site-packages/pandas/io/common.py", line 798, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: 'data/fg/train_instance_meta.pkl'
